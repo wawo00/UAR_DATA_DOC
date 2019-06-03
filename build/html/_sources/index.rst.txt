@@ -18,24 +18,32 @@ First of all, you need get your secret Keys include “Client ID” &
 2. Click “Send the Keys to secure mailbox”.
 3. Check the mail with Keys in your secure mailbox.
 
-//todo 示意截图
+.. figure:: img/seed-pic1.png
+   :scale: 70 %
+   :alt: picture 1
 
 IP whitelist
 ^^^^^^^^^^^^
 
 Then, you should put your IPs into the whitelist, only requests that
-from IPs in the whitelist are approved. 1. Login UPLTV, find “Get the
-Seeds” part on page “Advanced Features - User-level Data”. 2. Click the
-edit button next to “IP whitelist” box. 3. Input your IPs, separated
-multiple IP records by line break, and up to 10 records.
+from IPs in the whitelist are approved.
 
-//todo 示意截图
+1. Login UPLTV, find “Get the Seeds” part on page “Advanced Features - User-level Data”.
+2. Click the edit button next to “IP whitelist” box.
+3. Input your IPs, separated multiple IP records by line break, and up to 10 records.
+
+.. figure:: img/seed-pic2.png
+   :scale: 70 %
+   :alt: picture 2
 
 2. Get access_token
 -------------------
 
 **Request Address:**\ https://open-api.upltv.com/oauth/access_token
-**Request Method:**\ POST **Request Parameters:**
+
+**Request Method:**\ POST
+
+**Request Parameters:**
 
 ============= ====== ======== ================================================
 Parameters    Type   Required Description
@@ -66,10 +74,13 @@ access_token String Token of the Seeds Acquisition API
 3. The Seeds Acquisition API
 ----------------------------
 
-**Request Address:**\ https://open-api.upltv.com/api/v.1.0.0/app/
-**<upltv_pid>**/core/**<page>**/**<page_size>** **Request Method:**\ GET
-**header 信息：**\ 需设置 header 信息 “Authorization:Bearer
-**<access_token>**” **Related Parameters:**
+**Request Address:**\ https://open-api.upltv.com/api/v.1.0.0/app/**<upltv_pid>**/core/**<page>**/**<page_size>**
+
+**Request Method:**\ GET
+
+**header 信息：**\ 需设置 header 信息 "Authorization:Bearer**<access_token>**"
+
+**Related Parameters:**
 
 +------------------------+--------------+--------------+--------------+
 | Parameters             | Type         | Required     | Description  |

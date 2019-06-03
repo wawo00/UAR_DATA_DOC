@@ -137,14 +137,7 @@
       <li>Guides of the Seeds Acquisition API</li>
     
     
-      <li class="wy-breadcrumbs-aside">
-        
-            
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-    
+
   </ul>
 
   
@@ -169,22 +162,29 @@ User-level Data”.</li>
 <li>Click “Send the Keys to secure mailbox”.</li>
 <li>Check the mail with Keys in your secure mailbox.</li>
 </ol>
-<p>//todo 示意截图</p>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/seed-pic1.png"><img alt="picture 1" src="_images/seed-pic1.png" style="width: 574.0px; height: 252.0px;" /></a>
+</div>
 </div>
 <div class="section" id="ip-whitelist">
 <h3>IP whitelist<a class="headerlink" href="#ip-whitelist" title="Permalink to this headline">¶</a></h3>
 <p>Then, you should put your IPs into the whitelist, only requests that
-from IPs in the whitelist are approved. 1. Login UPLTV, find “Get the
-Seeds” part on page “Advanced Features - User-level Data”. 2. Click the
-edit button next to “IP whitelist” box. 3. Input your IPs, separated
-multiple IP records by line break, and up to 10 records.</p>
-<p>//todo 示意截图</p>
+from IPs in the whitelist are approved.</p>
+<ol class="arabic simple">
+<li>Login UPLTV, find “Get the Seeds” part on page “Advanced Features - User-level Data”.</li>
+<li>Click the edit button next to “IP whitelist” box.</li>
+<li>Input your IPs, separated multiple IP records by line break, and up to 10 records.</li>
+</ol>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/seed-pic2.png"><img alt="picture 2" src="_images/seed-pic2.png" style="width: 574.0px; height: 252.0px;" /></a>
+</div>
 </div>
 </div>
 <div class="section" id="get-access-token">
 <h2>2. Get access_token<a class="headerlink" href="#get-access-token" title="Permalink to this headline">¶</a></h2>
-<p><strong>Request Address:</strong><a class="reference external" href="https://open-api.upltv.com/oauth/access_token">https://open-api.upltv.com/oauth/access_token</a>
-<strong>Request Method:</strong>POST <strong>Request Parameters:</strong></p>
+<p><strong>Request Address:</strong><a class="reference external" href="https://open-api.upltv.com/oauth/access_token">https://open-api.upltv.com/oauth/access_token</a></p>
+<p><strong>Request Method:</strong>POST</p>
+<p><strong>Request Parameters:</strong></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="17%" />
@@ -251,10 +251,10 @@ multiple IP records by line break, and up to 10 records.</p>
 </div>
 <div class="section" id="the-seeds-acquisition-api">
 <h2>3. The Seeds Acquisition API<a class="headerlink" href="#the-seeds-acquisition-api" title="Permalink to this headline">¶</a></h2>
-<p><strong>Request Address:</strong><a class="reference external" href="https://open-api.upltv.com/api/v.1.0.0/app/">https://open-api.upltv.com/api/v.1.0.0/app/</a>
-<strong>&lt;upltv_pid&gt;</strong>/core/<strong>&lt;page&gt;</strong>/<strong>&lt;page_size&gt;</strong> <strong>Request Method:</strong>GET
-<strong>header 信息：</strong>需设置 header 信息 “Authorization:Bearer
-<strong>&lt;access_token&gt;</strong>” <strong>Related Parameters:</strong></p>
+<p><strong>Request Address:</strong><a class="reference external" href="https://open-api.upltv.com/api/v.1.0.0/app/">https://open-api.upltv.com/api/v.1.0.0/app/</a><strong>&lt;upltv_pid&gt;</strong>/core/<strong>&lt;page&gt;</strong>/<strong>&lt;page_size&gt;</strong></p>
+<p><strong>Request Method:</strong>GET</p>
+<p><strong>header 信息：</strong>需设置 header 信息 “Authorization:Bearer**&lt;access_token&gt;**”</p>
+<p><strong>Related Parameters:</strong></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="36%" />
