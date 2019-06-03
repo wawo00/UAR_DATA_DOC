@@ -37,7 +37,7 @@ div.rst-versions > div.rst-other-versions > div.injected > dl:nth-child(1) > str
 }
 
 div.rst-versions > div.rst-other-versions > div.injected > dl:nth-child(1) > strong > dd > a:after {
- content: '中文';
+ content: 'English';
  visibility: visible;
  display: block;
 }
@@ -48,7 +48,7 @@ div.rst-versions > div.rst-other-versions > div.injected > dl:nth-child(1) > dd:
 }
 
 div.rst-versions > div.rst-other-versions > div.injected > dl:nth-child(1) > dd:first-of-type > a:after {
- content: 'English';
+ content: '中文';
  visibility: visible;
  display: block;
 }

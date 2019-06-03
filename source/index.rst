@@ -78,7 +78,7 @@ access_token String Token of the Seeds Acquisition API
 
 **Request Method:**\ GET
 
-**header 信息：**\ 需设置 header 信息 "Authorization:Bearer**<access_token>**"
+**header ：**\ "Authorization:Bearer **<access_token>** "
 
 **Related Parameters:**
 
