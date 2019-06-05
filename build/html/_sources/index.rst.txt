@@ -132,4 +132,15 @@ pageCount  int    count of pages
        "data": {
            "list": [
                {
-                   "country": "cn"
+                   "country": "cn",
+                   "device": "xxxxxxxxxxxxxxxxxxxxxxx"
+               },
+               {
+                   "country": "us",
+                   "device": "xxxxxxxxxxxxxxxxxxxxxxx"
+               }
+           ],
+           "page": 1,
+           "pageCount": 1
+       }
+   }
