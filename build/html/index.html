@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Guides of the Seeds Acquisition API &mdash; UPInteractive Document  documentation</title>
+  <title>Guides of syncing UAR data to custom target &mdash; UPInteractive Document  documentation</title>
   
 
   
@@ -79,14 +79,12 @@
             
               <!-- Local TOC -->
               <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Guides of the Seeds Acquisition API</a><ul>
-<li><a class="reference internal" href="#keys-ip-whitelist">1. Keys &amp; IP whitelist</a><ul>
-<li><a class="reference internal" href="#get-keys">Get Keys</a></li>
-<li><a class="reference internal" href="#ip-whitelist">IP whitelist</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#get-access-token">2. Get access_token</a></li>
-<li><a class="reference internal" href="#the-seeds-acquisition-api">3. The Seeds Acquisition API</a></li>
+<li><a class="reference internal" href="#">Guides of syncing UAR data to custom target</a><ul>
+<li><a class="reference internal" href="#get-started">1. Get started</a></li>
+<li><a class="reference internal" href="#content-of-sync-request">2. Content of sync request</a></li>
+<li><a class="reference internal" href="#content-of-return">3. Content of return</a></li>
+<li><a class="reference internal" href="#whitelist-the-ip-of-upltv">4. Whitelist the IP of UPLTV</a></li>
+<li><a class="reference internal" href="#important-remarks">5. Important remarks</a></li>
 </ul>
 </li>
 </ul>
@@ -134,7 +132,7 @@
     
       <li><a href="#">Docs</a> &raquo;</li>
         
-      <li>Guides of the Seeds Acquisition API</li>
+      <li>Guides of syncing UAR data to custom target</li>
     
     
 
@@ -146,231 +144,184 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="guides-of-the-seeds-acquisition-api">
-<h1>Guides of the Seeds Acquisition API<a class="headerlink" href="#guides-of-the-seeds-acquisition-api" title="Permalink to this headline">¶</a></h1>
-<p>This is an operational documentation of Germinative Audience data
-(hereafter called “Seeds”) acquisition API which is provided by UPLTV.</p>
-<div class="section" id="keys-ip-whitelist">
-<h2>1. Keys &amp; IP whitelist<a class="headerlink" href="#keys-ip-whitelist" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="get-keys">
-<h3>Get Keys<a class="headerlink" href="#get-keys" title="Permalink to this headline">¶</a></h3>
-<p>First of all, you need get your secret Keys include “Client ID” &amp;
-“Secret”</p>
+  <div class="section" id="guides-of-syncing-uar-data-to-custom-target">
+<h1>Guides of syncing UAR data to custom target<a class="headerlink" href="#guides-of-syncing-uar-data-to-custom-target" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="get-started">
+<h2>1. Get started<a class="headerlink" href="#get-started" title="Permalink to this headline">¶</a></h2>
+<p>First of all, please turn on the sync status of the Apps and set your
+target URL:</p>
 <ol class="arabic simple">
-<li>Login UPLTV, find “Get the Seeds” part on page “Advanced Features -
-User-level Data”.</li>
-<li>Click “Send the Keys to secure mailbox”.</li>
-<li>Check the mail with Keys in your secure mailbox.</li>
+<li>Login UPLTV, find “Advertising ROI Analysis” on page “Advanced
+Features” - “User-level Data”.</li>
+<li>Check to tab “Custom Target”.</li>
+<li>Click the “edit” button of the App that you want to sync.</li>
+<li>Turning the status switch on, filling your target URL and Apple
+ID(for iOS App only). Then, click the “check” button to save it.</li>
+<li>For the App that enabled sync, there will be a “Send testing data”
+button. Please click the button to verify that the sync is working
+normally.</li>
 </ol>
-<div class="figure">
-<a class="reference internal image-reference" href="_images/seed-pic1.png"><img alt="picture 1" src="_images/seed-pic1.png" style="width: 574.0px; height: 252.0px;" /></a>
+<p><strong>Important</strong>: For security reasons, we strongly recommend that you use
+a “https” URL as target URL!</p>
 </div>
-</div>
-<div class="section" id="ip-whitelist">
-<h3>IP whitelist<a class="headerlink" href="#ip-whitelist" title="Permalink to this headline">¶</a></h3>
-<p>Then, you should put your IPs into the whitelist, only requests that
-from IPs in the whitelist are approved.</p>
-<ol class="arabic simple">
-<li>Login UPLTV, find “Get the Seeds” part on page “Advanced Features - User-level Data”.</li>
-<li>Click the edit button next to “IP whitelist” box.</li>
-<li>Input your IPs, separated multiple IP records by line break, and up to 10 records.</li>
-</ol>
-<div class="figure">
-<a class="reference internal image-reference" href="_images/seed-pic2.png"><img alt="picture 2" src="_images/seed-pic2.png" style="width: 574.0px; height: 252.0px;" /></a>
-</div>
-</div>
-</div>
-<div class="section" id="get-access-token">
-<h2>2. Get access_token<a class="headerlink" href="#get-access-token" title="Permalink to this headline">¶</a></h2>
-<p><strong>Request Address:</strong><a class="reference external" href="https://open-api.upltv.com/oauth/access_token">https://open-api.upltv.com/oauth/access_token</a></p>
-<p><strong>Request Method:</strong>POST</p>
-<p><strong>Request Parameters:</strong></p>
+<div class="section" id="content-of-sync-request">
+<h2>2. Content of sync request<a class="headerlink" href="#content-of-sync-request" title="Permalink to this headline">¶</a></h2>
+<p><strong>Request Address</strong>：Your target URL</p>
+<p><strong>Request Method</strong>：POST</p>
+<p><strong>Request content</strong>：</p>
+<p>The content of sync request a json array, and each element in the array
+is an user-level ad revenue data record. These records will consist of
+the following parameters:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="17%" />
-<col width="8%" />
-<col width="11%" />
-<col width="64%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameters</th>
-<th class="head">Type</th>
-<th class="head">Required</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>grant_type</td>
-<td>String</td>
-<td>Yes</td>
-<td>Fixed as: <strong>client_credentials</strong></td>
-</tr>
-<tr class="row-odd"><td>client_id</td>
-<td>String</td>
-<td>Yes</td>
-<td><strong>Client ID</strong> in the mail to your secure mailbox</td>
-</tr>
-<tr class="row-even"><td>client_secret</td>
-<td>String</td>
-<td>Yes</td>
-<td><strong>Secret</strong> in the mail to your secure mailbox</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Return Parameters:</strong></p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="18%" />
 <col width="9%" />
-<col width="72%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameters</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>expires_in</td>
-<td>int</td>
-<td>The effective duration of the Token, in seconds</td>
-</tr>
-<tr class="row-odd"><td>access_token</td>
-<td>String</td>
-<td>Token of the Seeds Acquisition API</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Return Sample:</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
- <span class="s2">&quot;expires_in&quot;</span><span class="p">:</span> <span class="mi">3600</span><span class="p">,</span>
- <span class="s2">&quot;access_token&quot;</span><span class="p">:</span> <span class="s2">&quot;xxxxxxxxxx&quot;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="the-seeds-acquisition-api">
-<h2>3. The Seeds Acquisition API<a class="headerlink" href="#the-seeds-acquisition-api" title="Permalink to this headline">¶</a></h2>
-<p><strong>Request Address:</strong><a class="reference external" href="https://open-api.upltv.com/api/v.1.0.0/app/">https://open-api.upltv.com/api/v.1.0.0/app/</a><strong>&lt;upltv_pid&gt;</strong>/core/<strong>&lt;page&gt;</strong>/<strong>&lt;page_size&gt;</strong></p>
-<p><strong>Request Method:</strong>GET</p>
-<p><strong>header ：</strong>”Authorization:Bearer <strong>&lt;access_token&gt;</strong> “</p>
-<p><strong>Related Parameters:</strong></p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="36%" />
-<col width="21%" />
-<col width="21%" />
-<col width="21%" />
+<col width="5%" />
+<col width="5%" />
+<col width="63%" />
+<col width="17%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameters</th>
 <th class="head">Type</th>
 <th class="head">Required</th>
 <th class="head">Description</th>
+<th class="head">Example</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>access_token</td>
-<td>String</td>
+<tr class="row-even"><td>upltv_product_id</td>
+<td>string</td>
 <td>Yes</td>
-<td>Token of the
-Seeds
-Acquisition
-API</td>
+<td>Product ID in UPLTV, a 7 digits string.</td>
+<td>1001786</td>
 </tr>
-<tr class="row-odd"><td>upltv_id</td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<tr class="row-odd"><td>product_mark</td>
+<td>string</td>
 <td>Yes</td>
-<td><strong>App ID</strong>
-of your App
-on UPLTV,
-find it on
-page “App
-Management -
-App List” on
-UPLTV
-dashboard</td>
+<td>Product identification info, including the App platform(android or ios) and App identifier(package name of Android App &amp; Apple ID of iOS App).</td>
+<td>android:com.testing.new</td>
 </tr>
-<tr class="row-even"><td>page</td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<tr class="row-even"><td>device_id</td>
+<td>string</td>
 <td>Yes</td>
-<td>Page number
-(default as
-1)</td>
+<td>Device identification info, GAID of Android App &amp; IDFA of iOS App.</td>
+<td>1E2DFA89-496A-47FD-9941-DF1FC4E6484A</td>
 </tr>
-<tr class="row-odd"><td>page_size</td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<tr class="row-odd"><td>event_name</td>
+<td>string</td>
 <td>Yes</td>
-<td>Number of
-records on
-each page
-(Up to 1000,
-default as
-20)</td>
+<td>Event name that generated the revenue.</td>
+<td>UPLTV_adrev</td>
+</tr>
+<tr class="row-even"><td>currency</td>
+<td>float</td>
+<td>Yes</td>
+<td>Currency of the revenue.</td>
+<td>usd</td>
+</tr>
+<tr class="row-odd"><td>revenue</td>
+<td>detail</td>
+<td>Yes</td>
+<td>Daily total revenue amount of special user.</td>
+<td>17.19</td>
+</tr>
+<tr class="row-even"><td>event_time</td>
+<td>datetime</td>
+<td>Yes</td>
+<td>Record generation time(UTC). Ususlly, it will be 0am on the next day after the revenue generation, in format: yyyy-mm-dd hh:mm:ss</td>
+<td>2019-07-07 00:00:00</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return Parameters:</strong></p>
+<p>Sample of request content：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[{</span>
+    <span class="s2">&quot;upltv_product_id&quot;</span><span class="p">:</span><span class="s2">&quot;1001786&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;product_mark&quot;</span><span class="p">:</span><span class="s2">&quot;android:com.testing.new&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;device_id&quot;</span><span class="p">:</span><span class="s2">&quot;38400000-8cf0-11bd-b23e-10b96e40000d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;event_name&quot;</span><span class="p">:</span><span class="s2">&quot;UPLTV_adrev&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;revenue&quot;</span><span class="p">:</span> <span class="mf">0.88</span><span class="p">,</span>
+    <span class="s2">&quot;currency&quot;</span><span class="p">:</span> <span class="s2">&quot;usd&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;event_time&quot;</span><span class="p">:</span><span class="s2">&quot;2019-07-17 00:00:00&quot;</span>
+<span class="p">},</span>
+<span class="p">{</span>
+    <span class="s2">&quot;upltv_product_id&quot;</span><span class="p">:</span><span class="s2">&quot;1001785&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;product_mark&quot;</span><span class="p">:</span><span class="s2">&quot;ios:1759002391&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;device_id&quot;</span><span class="p">:</span><span class="s2">&quot;1E2DFA89-496A-47FD-9941-DF1FC4E6484A&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;event_name&quot;</span><span class="p">:</span><span class="s2">&quot;UPLTV_adrev&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;revenue&quot;</span><span class="p">:</span> <span class="mf">0.89</span><span class="p">,</span>
+    <span class="s2">&quot;currency&quot;</span><span class="p">:</span> <span class="s2">&quot;usd&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;event_time&quot;</span><span class="p">:</span><span class="s2">&quot;2019-07-17 00:00:00&quot;</span>
+<span class="p">}]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="content-of-return">
+<h2>3. Content of return<a class="headerlink" href="#content-of-return" title="Permalink to this headline">¶</a></h2>
+<p>Please provide the following content in the return message after
+receiving the push request:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="16%" />
+<col width="12%" />
+<col width="8%" />
 <col width="10%" />
-<col width="74%" />
+<col width="59%" />
+<col width="11%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameters</th>
 <th class="head">Type</th>
+<th class="head">Required</th>
 <th class="head">Description</th>
+<th class="head">Example</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>country</td>
-<td>String</td>
-<td>iso code of the country that the user located</td>
+<tr class="row-even"><td>code</td>
+<td>number</td>
+<td>Yes</td>
+<td>Status code, <strong>return 200</strong> when processing the request successful.</td>
+<td>200</td>
 </tr>
-<tr class="row-odd"><td>device</td>
-<td>String</td>
-<td>user’s device id</td>
-</tr>
-<tr class="row-even"><td>page</td>
-<td>int</td>
-<td>current page number</td>
-</tr>
-<tr class="row-odd"><td>pageCount</td>
-<td>int</td>
-<td>count of pages</td>
+<tr class="row-odd"><td>message</td>
+<td>string</td>
+<td>Yes</td>
+<td>Brief description of the request processing result.</td>
+<td>Succeeded</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return Sample:</strong></p>
+<p>Sample of return content</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
-    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;list&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="s2">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;cn&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;device&quot;</span><span class="p">:</span> <span class="s2">&quot;xxxxxxxxxxxxxxxxxxxxxxx&quot;</span>
-            <span class="p">},</span>
-            <span class="p">{</span>
-                <span class="s2">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;us&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;device&quot;</span><span class="p">:</span> <span class="s2">&quot;xxxxxxxxxxxxxxxxxxxxxxx&quot;</span>
-            <span class="p">}</span>
-        <span class="p">],</span>
-        <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">&quot;pageCount&quot;</span><span class="p">:</span> <span class="mi">1</span>
-    <span class="p">}</span>
+    <span class="s2">&quot;code&quot;</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;Succeeded&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="whitelist-the-ip-of-upltv">
+<h2>4. Whitelist the IP of UPLTV<a class="headerlink" href="#whitelist-the-ip-of-upltv" title="Permalink to this headline">¶</a></h2>
+<p>Please add the following IP which UPLTV may use for sync requests to
+your whitelist: <strong>120.132.23.7</strong></p>
+</div>
+<div class="section" id="important-remarks">
+<h2>5. Important remarks<a class="headerlink" href="#important-remarks" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>UPLTV will start to push the data of previous day at UTC 7pm. Sync
+tasks of different Apps will be postponded after that time according
+to the actual tasks queue.</li>
+<li>The daily data will be splited into multiple requests, and up to 20
+records in each request.</li>
+<li>The request will be considered to be failed if the request timed
+out(beyond 15000ms), or the code in the returned content is not 200.</li>
+<li>For the failed request, UPLTV will attempt to re-post and retry up to
+3 times.</li>
+<li>Please contact your Account Manager, if you need to obtain the data
+which is synced failed after retrying 3 times.</li>
+<li>Due to the retry mechanism, UPLTV recommend that to update your local
+data by taking the parameters “upltv_product_id” &amp;
+“device_id_combination” together as unique indentifier when
+processing the request content.</li>
+</ol>
 </div>
 </div>
 
